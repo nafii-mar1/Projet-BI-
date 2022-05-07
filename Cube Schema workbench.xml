@@ -1,0 +1,88 @@
+<Schema name="ProjetDM">
+  <Cube name="CubeSales" visible="true" cache="true" enabled="true">
+    <Table name="sales">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="DateID" highCardinality="false" name="Date">
+      <Hierarchy name="default" visible="true" hasAll="false" primaryKey="DateiD">
+        <Table name="date">
+        </Table>
+        <Level name="Jour" visible="true" table="date" column="Jour" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Month" visible="true" table="date" column="Month" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Ann&#233;e" visible="true" table="date" column="Ann&#233;e" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Saison" visible="true" table="date" column="saison" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Type" visible="true" table="date" column="Type" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CustomerID" highCardinality="false" name="Customer">
+      <Hierarchy name="default" visible="true" hasAll="true" primaryKey="CustomerID">
+        <Table name="customer">
+        </Table>
+        <Level name="Adresse" visible="true" table="customer" column="Adresse" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="TerritoryID" highCardinality="false" name="Territory">
+      <Hierarchy name="default" visible="true" hasAll="true">
+        <Table name="territory">
+        </Table>
+        <Level name="name" visible="true" column="Name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="CountryRegionCode" visible="true" column="CountryRegionCode" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="SalesYTD" visible="true" column="SalesYTD" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="SalesLastYear" visible="true" column="SalesLastYear" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="CostYTD" visible="true" column="CostYTD" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="CostLastYear" visible="true" column="CostLastYear" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="SalesPersonID" highCardinality="false" name="SalesPerson">
+      <Hierarchy name="default" visible="true" hasAll="true">
+        <Table name="salesperson">
+        </Table>
+        <Level name="SalesQuota" visible="true" column="SalesQuota" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Bonus" visible="true" column="Bonus" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="CommissionPct" visible="true" column="ComissionPct" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="SalesYTD" visible="true" column="SalesYTD" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="SalesLastYear" visible="true" column="SalesLastYear" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CreditCardID" highCardinality="false" name="CreditCard">
+      <Hierarchy name="Default" visible="true" hasAll="true">
+        <Table name="creditcard">
+        </Table>
+        <Level name="CardType" visible="true" column="CardType" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="CurrencyCode" highCardinality="false" name="Currency">
+      <Hierarchy name="default" visible="true" hasAll="true">
+        <Table name="currency">
+        </Table>
+        <Level name="CurrencyCode" visible="true" column="CurrencyCode" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="name" visible="true" column="Name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="TotalDue" column="TotalDue" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="TaxAmt" column="TaxAmt" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+    <Measure name="SubTotal" column="SubTotal" datatype="Numeric" aggregator="distinct-count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
